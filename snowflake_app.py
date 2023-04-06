@@ -38,7 +38,7 @@ except URLError as e:
  streamlit.error()
  
  
-choice = streamlit.text_input('What fruit would you like information about2?','banana')
+choice = streamlit.text_input('What fruit would you like to add?')
 
 streamlit.header("Fruit load list contains")
 def get_fruit_load_list():
