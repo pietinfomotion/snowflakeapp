@@ -37,7 +37,7 @@ choice = streamlit.text_input('What fruit would you like information about2?','b
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("Select * from fruit_load_list where fruit_name like " + choice)
+my_cur.execute("Select * from fruit_load_list where fruit_name like '" + choice + "'")
 my_data_rows = my_cur.fetchall()
 streamlit.header("Fruit load list contains")
 streamlit.dataframe(my_data_rows)
