@@ -33,9 +33,11 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
 
+choice = streamlit.text_input('What fruit would you like information about?','banana')
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("Select * from fruit_load_list")
+my_cur.execute("Select * from fruit_load_list where fruit_name = " + choice)
 my_data_rows = my_cur.fetchall()
 streamlit.header("Fruit load list contains")
 streamlit.dataframe(my_data_rows)
